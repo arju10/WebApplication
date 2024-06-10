@@ -22,7 +22,7 @@ const Gallery = ({ images, title, additionalData }) => (
     </button>
     {additionalData ? (
       <div>
-        <div className="flex flex-row p-5 mx-8 mb-20">
+        <div className="flex flex-col-reverse sm:flex-row p-5 mx-8 mb-20">
           <div className="w-[200px] flex-shrink-0 mr-10 mt-10">
             <h1 className="text-xl md:text-xl font-bold mb-2"> {title[1]}</h1>
             <ol className="list-decimal list-inside marker:text-green-500">

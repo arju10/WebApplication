@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useState } from "react";
 import img1 from "../../assets/contactus.jpeg";
 import AnimatedBanner from "../AnimatedBanner/AnimatedBanner";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
+import { FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
 function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
   const [isMessageSent, setIsMessageSent] = useState(false);
 
@@ -20,24 +21,27 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs.send(
-      'EMAIL_SERVICE_ID', // Replace with your EmailJS service ID
-      'TEMPLATE_ID', // Replace with your EmailJS template ID
-      formData,
-      'PRIVATE_KEY' // Replace with your EmailJS Private Key 
-    ).then((response) => {
-      console.log('SUCCESS!', response.status, response.text);
-      setIsMessageSent(true);
-      // Optionally, reset the form data
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
+    emailjs
+      .send(
+        "service_ks0kl7o", // Replace with your EmailJS service ID
+        "template_cacdtht", // Replace with your EmailJS template ID
+        formData,
+        "EcZcP1zbMWtBo9rmY" // Replace with your EmailJS public Key
+      )
+      .then((response) => {
+        console.log("SUCCESS!", response.status, response.text);
+        setIsMessageSent(true);
+        // Optionally, reset the form data
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      })
+      .catch((error) => {
+        console.error("FAILED...", error);
+        setIsMessageSent(false);
       });
-    }).catch((error) => {
-      console.error('FAILED...', error);
-      setIsMessageSent(false);
-    });
   };
 
   return (
@@ -98,16 +102,36 @@ function Contact() {
             >
               Contact Information
             </div>
-            <div className="mx-1 3xs:mx-4 2xs:mx-10 pb-0.5">+8801916231759 </div>
-            <div className="mx-1 3xs:mx-4 2xs:mx-10 pb-0.5">+8801925425497</div>
-            <div className="mx-1 3xs:mx-4 2xs:mx-10">mktg@lumen-bd.com</div>
+            <div className="mx-1 3xs:mx-4 2xs:mx-10 hover:text-green-600">
+              <a href="mailto:mktg@lumen-bd.com">
+                <FaEnvelope style={{ display: "inline", color: "#00a850e6" }} />{" "}
+                mktg@lumen-bd.com
+              </a>
+            </div>
+            <div className="mx-1 3xs:mx-4 2xs:mx-10 pb-0.5 hover:text-green-600">
+              <a href="https://api.whatsapp.com/send?phone=8801916231759">
+                <FaWhatsapp style={{ display: "inline", color: "#00a850e6" }} />{" "}
+                +8801916231759
+              </a>
+            </div>
+            <div className="mx-1 3xs:mx-4 2xs:mx-10 pb-0.5 hover:text-green-600">
+              <a href="https://api.whatsapp.com/send?phone=8801925425497">
+                <FaWhatsapp style={{ display: "inline", color: "#00a850e6" }} />{" "}
+                +8801925425497
+              </a>
+            </div>
           </div>
 
           <div className="block h-12 xl:hidden 2xl:hidden lg:hidden sm:block sm:w-full sm:h-16 md:block md:w-full md:h-20"></div>
 
           <div className="w-full lg:w-1/2 bg-[#F8F8F8] rounded-md shadow-lg hover:shadow-md">
-            <form className="3xs:px-0 2xs:px-5 py-6 xs:px-6 flex flex-col" onSubmit={handleSubmit}>
-              <div className="text-[#00a850e6] mx-4 mt-2 font-bold text-lg">Contact Us</div>
+            <form
+              className="3xs:px-0 2xs:px-5 py-6 xs:px-6 flex flex-col"
+              onSubmit={handleSubmit}
+            >
+              <div className="text-[#00a850e6] mx-4 mt-2 font-bold text-lg">
+                Contact Us
+              </div>
               <input
                 type="text"
                 name="name"
@@ -135,7 +159,10 @@ function Contact() {
                 onChange={handleChange}
                 required
               ></textarea>
-              <button type="submit" className="focus:text-black 3xs:mx-1 text-[#F8F8F8] m-4 p-2 h-8 w-12 3xs:h-10 3xs:w-20 shadow-md rounded bg-[#00a850e6]">
+              <button
+                type="submit"
+                className="hover:bg-[#00873b] 3xs:mx-1 text-[#F8F8F8] m-4 p-2 h-8 w-12 3xs:h-10 3xs:w-20 shadow-md rounded bg-[#00a850e6]"
+              >
                 Send
               </button>
               {isMessageSent && (
@@ -168,6 +195,3 @@ function Contact() {
 }
 
 export default Contact;
-
-
-

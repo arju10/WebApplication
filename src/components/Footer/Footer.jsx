@@ -8,6 +8,7 @@ import logo from "../../assets/luman_logo.png";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   const navItems = [
@@ -83,12 +84,12 @@ const Footer = () => {
                   style={{
                     display: "block",
                     marginBottom: "5px",
-                    color: "inherit",
                     textDecoration: "none",
                     fontFamily: "Roboto, sans-serif",
                     fontSize: "14px",
                     marginTop: "15px",
                   }}
+                  className="hover:text-green-600"
                 >
                   {item.title}
                 </Link>
@@ -120,24 +121,12 @@ const Footer = () => {
                   marginTop: "20px",
                 }}
               >
-                <PhoneIcon
-                  style={{ marginRight: "5px", textAlign: "center" }}
-                />{" "}
-                +8801916231759
-              </Typography>
-              <Typography
-                variant="body2"
-                style={{
-                  fontFamily: "Roboto, sans-serif",
-                  fontSize: "14px",
-                  color: "#000000",
-                  marginTop: "20px",
-                }}
-              >
-                <PhoneIcon
-                  style={{ marginRight: "5px", textAlign: "center" }}
-                />{" "}
-                +8801925425497
+                <a href="https://api.whatsapp.com/send?phone=8801916231759" className="hover:text-green-600">
+                  <FaWhatsapp
+                    style={{ display: "inline", color: "#00a850e6" }}
+                  />{" "}
+                  +8801916231759
+                </a>
               </Typography>
               <Typography
                 variant="body2"
@@ -148,10 +137,28 @@ const Footer = () => {
                   marginTop: "10px",
                 }}
               >
-                <MailOutlineIcon
-                  style={{ marginRight: "5px", textAlign: "center" }}
-                />{" "}
-                mktg@lumen-bd.com
+                <a href="https://api.whatsapp.com/send?phone=8801925425497" className="hover:text-green-600">
+                  <FaWhatsapp
+                    style={{ display: "inline", color: "#00a850e6" }}
+                  />{" "}
+                  +8801925425497
+                </a>
+              </Typography>
+              <Typography
+                variant="body2"
+                style={{
+                  fontFamily: "Roboto, sans-serif",
+                  fontSize: "14px",
+                  color: "#000000",
+                  marginTop: "10px",
+                }}
+              >
+                <a href="mailto:mktg@lumen-bd.com" className="hover:text-green-600">
+                  <FaEnvelope
+                    style={{ display: "inline", color: "#00a850e6" }}
+                  />{" "}
+                  mktg@lumen-bd.com
+                </a>
               </Typography>
             </Grid>
 
